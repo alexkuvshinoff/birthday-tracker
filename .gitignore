@@ -1,0 +1,9 @@
+# .gitignore
+
+.env
+
+__pycache__
+
+auth/google_api_credentials.json
+
+
