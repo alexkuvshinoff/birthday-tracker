@@ -1,20 +1,20 @@
-# Daily Briefings Service (Python)
+# Birthday Tracker (Python)
 
-Sends you a customized email every morning, with information of interest such as the upcoming weather forecast.
+Sends a customized email the in the morning with the first, last name and age of friends on the day of their birthday so that you can remember to wish them happy birthday
 
 ## Setup
 
 Fork this repo and clone it onto your local computer (for example to your Desktop), then navigate there from the command-line:
 
 ```sh
-cd ~/Desktop/daily-briefings-py/
+cd ~/Desktop/birthday-tracker-py/
 ```
 
-Create and activate a new Anaconda virtual environment, perhaps named "briefings-env":
+Create and activate a new Anaconda virtual environment, perhaps named "birthday-env":
 
 ```sh
-conda create -n briefings-env python=3.7
-conda activate briefings-env
+conda create -n birthday-env python=3.7
+conda activate birthday-env
 ```
 
 Then, from within the virtual environment, install package dependencies:
@@ -28,41 +28,32 @@ Obtain API Keys from the [Open Weather](https://home.openweathermap.org/api_keys
 ```sh
 # .env example
 
-APP_ENV="development" # or set to "production" on Heroku server
+APP_ENV="production" 
 
-OPEN_WEATHER_API_KEY="___________"
-MY_ZIP="10017"
+Google sheet set up:
+
+"https://www.googleapis.com/auth/spreadsheets", #> Allows read/write access to the user's sheets and their properties.
+"https://www.googleapis.com/auth/drive.file" #> Per-file access to files created or opened by the app.
+
 
 SENDGRID_API_KEY="_______________"
 MY_EMAIL_ADDRESS="hello@example.com"
-
-MY_NAME="Jon Snow"
+MY_NAME="Alex Kuvshinoff"
 ```
 
-> IMPORTANT: remember to save the ".env" file :-D
+> IMPORTANT: remember to save the ".env" file
 
 ## Usage
 
-From within the virtual environment, ensure you can run each of the following files and see them produce their desired results of: printing today's weather forecast, and sending an example email, respectively.
-
-```sh
-python -m app.weather_service # note the module-syntax invocation
-#> TODAY'S WEATHER FORECAST IS ...
-```
-
-```sh
-python -m app.email_service # note the module-syntax invocation
-#> SENDING EMAIL TO ...
-```
+From within the virtual environment, ensure you can send an email
 
 > NOTE: the Sendgrid emails might first start showing up in spam, until you designate them as coming from a trusted source (i.e. "Looks Safe")
->
-> ![](https://user-images.githubusercontent.com/1328807/77856232-c7a0ff80-71c3-11ea-9dce-7a32b88701c6.png)
 
-As long as each of those scripts works by itself, you can send the daily briefing email:
+## Schedule in Heroku
+
+Use the scheduler option in Heroku website to send an email daily:
 
 ```sh
-python -m app.daily_briefing # note the module-syntax invocation
+python -m app.birthday_tracker # note the module-syntax invocation
 ```
 
-![](https://user-images.githubusercontent.com/1328807/77860069-173ef580-71db-11ea-83c6-5897bb9f4f51.png)
